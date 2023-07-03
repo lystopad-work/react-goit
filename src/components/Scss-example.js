@@ -1,4 +1,4 @@
-import './CardContent.scss'
+import './Scss-example.scss'
 export const CardContent = ({title, duration, price}) => {
 
     return (
