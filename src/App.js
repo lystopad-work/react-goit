@@ -6,6 +6,7 @@ import {Forms} from "./components/forms/Forms";
 import {RegistrationForm} from "./components/forms/RegistrationForm";
 import {LifeCycle} from "./components/lifecycle/LifeCycle";
 import {ErrorBoundary} from "./components/ErrorBoundary";
+import {RickMortyMain} from "./components/http-request/RickMortyMain";
 function App() {
 
   return (
@@ -17,7 +18,8 @@ function App() {
         {/*  <Forms />*/}
         {/*  <RegistrationForm />*/}
         <ErrorBoundary>
-          <LifeCycle />
+          {/*<LifeCycle />*/}
+            <RickMortyMain />
         </ErrorBoundary>
       </div>
   );
