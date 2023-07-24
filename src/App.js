@@ -7,6 +7,7 @@ import {RegistrationForm} from "./components/forms/RegistrationForm";
 import {LifeCycle} from "./components/lifecycle/LifeCycle";
 import {ErrorBoundary} from "./components/ErrorBoundary";
 import {RickMortyMain} from "./components/http-request/RickMortyMain";
+import {HooksLesson} from "./components/hooksLesson/HooksLesson";
 function App() {
 
   return (
@@ -20,6 +21,7 @@ function App() {
         <ErrorBoundary>
           {/*<LifeCycle />*/}
             <RickMortyMain />
+          {/*  <HooksLesson />*/}
         </ErrorBoundary>
       </div>
   );
