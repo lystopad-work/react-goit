@@ -23,6 +23,6 @@ export const getError = async () => {
 }
 
 export const findByName = async (person) => {
-    const {name, gender} = person;
-    return await api.get(`/character/?name=${name}&gender=${gender}`)
+    const {name} = person;
+    return await api.get(`/character/?name=${name}`)
 }
