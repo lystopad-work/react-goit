@@ -1,7 +1,7 @@
-import './Css-example.css';
-import content from '../data/card-content.json';
-import {CardContent} from "./Scss-example";
-import {CardButton} from "./Css-module-example";
+import './Card.css';
+import content from '../../data/card-content.json';
+import {CardContent} from "./CardContent";
+import {CardButton} from "./CardButton";
 
 // const {title, price, duration} = content;
 export const Card = ({isCardHovered}) => {

@@ -1,0 +1,28 @@
+.todos-container {
+    width: 90%;
+    margin: 20px auto;
+    min-height: 400px;
+    border: 1px solid #000000;
+    border-radius: 20px;
+    padding: 10px;
+}
+
+.todos-wrapper {
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    list-style: none;
+    flex-wrap: wrap;
+}
+
+.todos-wrapper > li {
+    border-radius: 10px;
+    border: 1px solid #B4BCCF;
+    padding: 20px;
+    margin-right: 20px;
+}
+
+.todos-wrapper > li.completed {
+    background: antiquewhite;
+}
+
