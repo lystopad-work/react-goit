@@ -1,0 +1,12 @@
+.cards-wrapper-container {
+    background: rgb(39, 43, 51);
+    width: auto;
+    min-height: 100vh;
+    padding: 20px;
+    height: 100%;
+}
+
+.cards-wrapper {
+    display: flex;
+    flex-wrap: wrap;
+}
