@@ -1,0 +1,19 @@
+.buttonWrapper {
+    width: 70px;
+    height: 70px;
+    flex-shrink: 0;
+    border-radius: 20px;
+    background: #B4BCCF;
+    color: #282c34;
+}
+
+.error {
+    color: red;
+    border: 1px solid #01C550;
+}
+
+.warning {
+    composes: error; /* === color: red; border: 1px solid #01C550;/*/
+    border-radius: 30px;
+    border: 2px solid #000000;
+}

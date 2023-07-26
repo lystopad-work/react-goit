@@ -1,0 +1,14 @@
+.modal-wrapper {
+    width: 50vw;
+    height: 500px;
+    background: #B4BCCF;
+    opacity: 0.8;
+    position: absolute;
+    margin: 0 auto;
+    top: 0;
+    left: 25%;
+}
+
+.modal-close-button {
+    margin-top: 450px;
+}
