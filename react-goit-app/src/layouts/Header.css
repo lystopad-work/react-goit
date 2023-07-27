@@ -1,26 +1,32 @@
-.navigation {
+.header {
+    height: 300px;
+    background: linear-gradient(#fcfcfc, rgba(180, 188, 207, 0.84), rgba(143, 154, 166, 0.84));
 
-    display: flex;
-    justify-content: space-between;
-
-    & .nav-items-container {
+    & .navigation {
         display: flex;
         justify-content: space-between;
-        width: 30%;
-    }
+        padding-top: 1rem;
 
-    & .nav-item {
-        color: rgb(51, 51, 51);
-        border: none;
-        font-weight: 700;
-        transition: all 0.1s ease 0s;
-
-        &:hover {
-            color: rgb(255, 152, 0);
+        & .nav-items-container {
+            display: flex;
+            justify-content: space-around;
+            width: 30%;
+            align-items: center;
         }
-    }
 
-    & svg {
-        fill: black;
+        & .nav-item {
+            color: rgb(51, 51, 51);
+            border: none;
+            font-weight: 700;
+            transition: all 0.1s ease 0s;
+
+            &:hover {
+                color: rgb(255, 152, 0);
+            }
+        }
+
+        & svg {
+            fill: black;
+        }
     }
 }
