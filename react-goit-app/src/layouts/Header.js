@@ -14,7 +14,7 @@ export const Header = () => {
                 <NavLink children={<Logo />} to='/' />
                 <ul className='nav-items-container'>
                     {navs.map(nav => (
-                        <NavLink to={nav.url} children={nav.text} className='nav-item'/>
+                        <NavLink to={nav.url} children={nav.text} className='nav-item' key={nav.text}/>
                     ))}
                     <li>
                         <button type='button' onClick={setIsModal} className='nav-button'>

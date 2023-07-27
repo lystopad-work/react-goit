@@ -47,8 +47,6 @@ export const CardsListPage = ({withSearch}) => {
     }, []);
 
     useEffect(() => {
-        console.log(debouncedValue)
-
         fetchCardsByName(debouncedValue)
     }, [debouncedValue])
 

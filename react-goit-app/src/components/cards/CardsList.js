@@ -23,5 +23,6 @@ export const CardsList = ({cards, onClick, withSearch}) => {
 
 CardsList.propTypes = {
     cards: PropTypes.array,
-    onClick: PropTypes.func
+    onClick: PropTypes.func,
+    withSearch: PropTypes.bool
 }
