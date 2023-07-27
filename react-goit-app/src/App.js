@@ -1,5 +1,6 @@
 import {Route, Routes} from "react-router-dom";
 import {CardsListPage} from "./pages/CardsListPage";
+import {CardPage} from "./pages/CardPage";
 
 function App() {
   return (
@@ -7,7 +8,7 @@ function App() {
       <Routes>
         <Route path='/'>
           <Route path='cards' element={<CardsListPage />}/>
-          {/*<Route path='cards/:cardId' element={<CardPage />}/>*/}
+          <Route path='cards/:id' element={<CardPage />}/>
         </Route>
 
       </Routes>

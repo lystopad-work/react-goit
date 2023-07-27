@@ -1,12 +1,11 @@
 import PropTypes from "prop-types";
-
+import './Card.css'
 export const Card = ({item}) => {
 
     const {image, name, location, species} = item;
 
     return (
-        <li>
-            <div className="http-card-container">
+            <li className="http-card-container">
                 <img src={image} alt={`${name} image`} className="http-card-image"/>
                 <div className="http-card-description">
                     <h1 className="http-card-title">
@@ -20,8 +19,7 @@ export const Card = ({item}) => {
                         {location.name}
                     </div>
                 </div>
-            </div>
-        </li>
+            </li>
     )
 }
 

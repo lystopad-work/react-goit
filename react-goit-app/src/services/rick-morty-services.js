@@ -16,3 +16,7 @@ export const findByName = async (person) => {
     const {name} = person;
     return await api.get(`/character/?name=${name}`)
 }
+
+export const getCardById = async (id) => {
+    return await api.get(`/character/${id}`)
+}
