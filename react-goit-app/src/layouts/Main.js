@@ -1,11 +1,13 @@
 import {Header} from "./Header";
 import {Outlet} from "react-router-dom";
-
+import './Main.css';
 export const Main = () => {
     return (
-        <div>
+        <div className='main-wrapper-container'>
             <Header />
-            <Outlet />
+            <main className='web-layout main-background'>
+                <Outlet />
+            </main>
         </div>
     )
 }

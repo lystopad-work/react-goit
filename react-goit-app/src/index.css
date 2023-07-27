@@ -19,6 +19,14 @@ html, body, p, span, a, h1, h2, h3, h4, h5, button, ul, li, img {
   text-decoration: none;
 }
 
+.App {
+  height: 100vh;
+}
+
+.main-wrapper-container {
+  height: 100%;
+}
+
 .web-layout {
   padding: 0 1.5rem;
 }
