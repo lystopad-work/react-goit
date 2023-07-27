@@ -17,7 +17,7 @@ export const Header = () => {
                         <NavLink to={nav.url} children={nav.text} className='nav-item'/>
                     ))}
                     <li>
-                        <button type='button' onClick={setIsModal}>
+                        <button type='button' onClick={setIsModal} className='nav-button'>
                             Contact Us
                         </button>
                     </li>

@@ -10,4 +10,13 @@
 .cards-wrapper {
     display: flex;
     flex-wrap: wrap;
+
+    @media (max-width: 1200px) {
+        justify-content: center;
+        align-items: center;
+    }
+
+    @media (min-width: 1200px) {
+        justify-content: space-around;
+    }
 }
