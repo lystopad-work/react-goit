@@ -1,9 +1,11 @@
 import {Route, Routes} from "react-router-dom";
 import {CardsListPage} from "./pages/CardsListPage";
-import {CardPage} from "./pages/CardPage";
+// import {CardPage} from "./pages/CardPage";
 import {Main} from "./layouts/Main";
-import {createContext, useCallback, useState} from "react";
+import {createContext, lazy, useCallback, useState} from "react";
 import {Modal} from "./components/Modal";
+
+const CardPage = lazy(() => import('./pages/CardPage'));
 
 export const ModalContext = createContext(null);
 function App() {

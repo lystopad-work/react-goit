@@ -9,7 +9,6 @@ export const SearchInput = ({handleChange, value, type, placeholder}) => {
                                value={value}
                                onChange={handleChange}
                                placeholder={placeholder}
-                               pattern="[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Za-z]{1,63}$"
                                required
                         />
                 </div>

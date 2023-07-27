@@ -1,9 +1,10 @@
 import {CardsList} from "../components/cards/CardsList";
-import {useEffect, useReducer, useState} from "react";
+import {useEffect, useMemo, useReducer, useState} from "react";
 import {error, errorHandler, success, successHandler} from "../helpers/helperReducer";
 import {findByName, getAllCards} from "../services/rick-morty-services";
 import {SearchInput} from "../components/SearchInput";
 import {useDebounce} from "../hooks/useDebounce";
+import {useSearchParams} from "react-router-dom";
 
 const reducer = (state, action) => {
     switch (action.type) {
@@ -38,7 +39,11 @@ export const CardsListPage = ({withSearch}) => {
     })
 
     const [searchValue, setSearchValue] = useState('')
-    const debouncedValue = useDebounce(searchValue, 1000)
+    const [searchParams, setSearchParams] = useSearchParams();
+
+    const name = useMemo(() => {
+        return searchParams.get('name')
+    }, [searchParams])
 
     const {loading, items} = state;
 
@@ -46,9 +51,20 @@ export const CardsListPage = ({withSearch}) => {
         fetchCards()
     }, []);
 
+    const debouncedValue = useDebounce(name, 1000)
+
+    const params = useMemo(() => {
+        return Object.fromEntries([...searchParams])
+    }, [searchParams])
+
+    console.log(params) // how to get all params in object
+
     useEffect(() => {
-        fetchCardsByName(debouncedValue)
-    }, [debouncedValue])
+        if (debouncedValue) {
+            fetchCardsByName(debouncedValue)
+            setSearchValue(debouncedValue)
+        }
+    }, [debouncedValue]);
 
 
     const fetchCards = async () => {
@@ -78,6 +94,7 @@ export const CardsListPage = ({withSearch}) => {
     const handleSearch = (e) => {
         const value = e.target.value;
 
+        setSearchParams({name: value})
         setSearchValue(value)
     }
 
