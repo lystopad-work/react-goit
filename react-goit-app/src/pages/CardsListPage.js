@@ -1,6 +1,6 @@
 import {CardsList} from "../components/cards/CardsList";
 import {useEffect, useReducer} from "react";
-import {error, success} from "../helpers/helperReducer";
+import {error, errorHandler, success, successHandler} from "../helpers/helperReducer";
 import {getAllCards} from "../services/rick-morty-services";
 
 const reducer = (state, action) => {
@@ -47,9 +47,9 @@ export const CardsListPage = () => {
             const result = await getAllCards();
             const {results} = result.data;
 
-            dispatch({type: success('GET_ITEMS'), payload: results})
+            dispatch(successHandler('GET_ITEMS', results))
         } catch (e) {
-            dispatch({type: error('GET_ITEMS'), payload: e})
+            dispatch(errorHandler('GET_ITEMS',e))
         }
     }
 

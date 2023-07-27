@@ -13,4 +13,4 @@ export const errorHandler = (action, payload) => ({
     error: true
 })
 
-export const actionGenerator = type => payload => ({type, payload})
+// export const actionGenerator = type => payload => ({type, payload})

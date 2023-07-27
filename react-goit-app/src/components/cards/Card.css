@@ -1,6 +1,6 @@
 .http-card-container {
     display: flex;
-    width: 600px;
+    min-width: 600px;
     height: 220px;
     overflow: hidden;
     background: rgb(60, 62, 68);
