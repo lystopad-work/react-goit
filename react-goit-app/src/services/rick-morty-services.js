@@ -12,8 +12,7 @@ export const getError = async () => {
     return await api.get(`/charrgeiogre`)
 }
 
-export const findByName = async (person) => {
-    const {name} = person;
+export const findByName = async (name) => {
     return await api.get(`/character/?name=${name}`)
 }
 
