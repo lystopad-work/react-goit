@@ -19,7 +19,8 @@ function App() {
         <ModalContext.Provider value={{isModal, setIsModal: handleModal}}>
             <Routes>
                 <Route path='/' element={<Main />}>
-                    <Route path='cards' element={<CardsListPage />}/>
+                    <Route index element={<CardsListPage />}/>
+                    <Route path='cards' element={<CardsListPage withSearch={true}/>}/>
                     <Route path='cards/:id' element={<CardPage />}/>
                 </Route>
             </Routes>

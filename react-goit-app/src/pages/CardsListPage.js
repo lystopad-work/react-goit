@@ -27,7 +27,7 @@ const reducer = (state, action) => {
         }
     }
 }
-export const CardsListPage = () => {
+export const CardsListPage = ({withSearch}) => {
 
     const [state, dispatch] = useReducer(reducer, {
         loading: false,
@@ -59,7 +59,7 @@ export const CardsListPage = () => {
 
     return (
         <div>
-            {!!items.length && <CardsList cards={items}/>}
+            {!!items.length && <CardsList cards={items} withSearch={withSearch}/>}
         </div>
     )
 }
