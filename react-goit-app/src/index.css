@@ -18,3 +18,7 @@ html, body, p, span, a, h1, h2, h3, h4, h5, button, ul, li, img {
   list-style: none;
   text-decoration: none;
 }
+
+.web-layout {
+  padding: 0 1.5rem;
+}

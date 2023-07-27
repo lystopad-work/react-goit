@@ -1,0 +1,26 @@
+.navigation {
+
+    display: flex;
+    justify-content: space-between;
+
+    & .nav-items-container {
+        display: flex;
+        justify-content: space-between;
+        width: 30%;
+    }
+
+    & .nav-item {
+        color: rgb(51, 51, 51);
+        border: none;
+        font-weight: 700;
+        transition: all 0.1s ease 0s;
+
+        &:hover {
+            color: rgb(255, 152, 0);
+        }
+    }
+
+    & svg {
+        fill: black;
+    }
+}
