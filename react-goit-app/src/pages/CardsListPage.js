@@ -2,7 +2,7 @@ import {CardsList} from "../components/cards/CardsList";
 import {useEffect, useReducer, useState} from "react";
 import {error, errorHandler, success, successHandler} from "../helpers/helperReducer";
 import {findByName, getAllCards} from "../services/rick-morty-services";
-import {SearchInput} from "../components/searchInput";
+import {SearchInput} from "../components/SearchInput";
 import {useDebounce} from "../hooks/useDebounce";
 
 const reducer = (state, action) => {
