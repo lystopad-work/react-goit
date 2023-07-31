@@ -39,6 +39,8 @@ const CardPage = () => {
 
     const path = hrefLocation.state?.from ?? '/cards'
 
+    console.log('path', hrefLocation)
+
     if (loading) return <h1>Spinner</h1>
 
     return (

@@ -4,6 +4,8 @@ import {CardsListPage} from "./pages/CardsListPage";
 import {Main} from "./layouts/Main";
 import {createContext, lazy, useCallback, useState} from "react";
 import {Modal} from "./components/Modal";
+import {Example} from "./components/Example";
+import {useCurrentUser} from "./hooks/useCurrentUser";
 
 const CardPage = lazy(() => import('./pages/CardPage'));
 
@@ -11,6 +13,10 @@ export const ModalContext = createContext(null);
 function App() {
 
     const [isModal,setIsModal] = useState(false);
+
+    const validUser = useCurrentUser('hello')
+
+    console.log(validUser)
 
     const handleModal = useCallback(() => {
         setIsModal(prev => !prev)
@@ -30,6 +36,10 @@ function App() {
         {
             isModal && <Modal closeClick={handleModal}/>
         }
+        {/*<Example />*/}
+        {/*<Example />*/}
+        {/*<Example />*/}
+        {/*<Example />*/}
     </div>
   );
 }
