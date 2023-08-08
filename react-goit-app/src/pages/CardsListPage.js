@@ -5,6 +5,9 @@ import {findByName, getAllCards} from "../services/rick-morty-services";
 import {SearchInput} from "../components/SearchInput";
 import {useDebounce} from "../hooks/useDebounce";
 import {useSearchParams} from "react-router-dom";
+import {useDispatch, useSelector} from "react-redux";
+import cardsActions from '../store/actions'
+import {cardsSelectors} from "../store/selectors/cardsSelectors";
 
 const reducer = (state, action) => {
     switch (action.type) {
@@ -47,9 +50,18 @@ export const CardsListPage = ({withSearch}) => {
 
     const {loading, items} = state;
 
+    const reduxDispatch = useDispatch(); // краще називати її dispatch
+
+    const {cards} = useSelector(cardsSelectors)
+
     useEffect(() => {
         fetchCards()
     }, []);
+
+    useEffect(() => {
+        reduxDispatch(cardsActions.fetchCards(state.items))
+        // reduxDispatch({type: 'FETCH_CARDS_SUCCESS', payload: state.items})
+    }, [state.items]);
 
     const debouncedValue = useDebounce(name, 1000)
 

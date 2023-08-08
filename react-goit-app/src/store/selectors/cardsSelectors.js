@@ -1,0 +1,1 @@
+export const cardsSelectors = state => state.cards
