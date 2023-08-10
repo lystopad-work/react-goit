@@ -6,9 +6,9 @@ import {SearchInput} from "../components/SearchInput";
 import {useDebounce} from "../hooks/useDebounce";
 import {useSearchParams} from "react-router-dom";
 import {useDispatch, useSelector} from "react-redux";
-import cardsActions from '../store/actions'
 import {cardsSelectors} from "../store/selectors/cardsSelectors";
-
+// import {fetchReduxCards} from "../store/cardsStore";
+import {fetchReduxCards} from "../store/cardsStore"
 const reducer = (state, action) => {
     switch (action.type) {
         case 'SET_LOADING': {
@@ -59,7 +59,7 @@ export const CardsListPage = ({withSearch}) => {
     }, []);
 
     useEffect(() => {
-        reduxDispatch(cardsActions.fetchCards(state.items))
+        reduxDispatch(fetchReduxCards(state.items))
         // reduxDispatch({type: 'FETCH_CARDS_SUCCESS', payload: state.items})
     }, [state.items]);
 

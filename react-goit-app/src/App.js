@@ -4,6 +4,7 @@ import {CardsListPage} from "./pages/CardsListPage";
 import {Main} from "./layouts/Main";
 import {createContext, lazy, useCallback, useState} from "react";
 import {Modal} from "./components/Modal";
+import {QuizPage} from "./pages/QuizPage";
 
 const CardPage = lazy(() => import('./pages/CardPage'));
 
@@ -24,6 +25,7 @@ function App() {
                     <Route index element={<CardsListPage />}/>
                     <Route path='cards' element={<CardsListPage withSearch={true}/>}/>
                     <Route path='cards/:id' element={<CardPage />}/>
+                    <Route path='quiz' element={<QuizPage />} />
                 </Route>
             </Routes>
         </ModalContext.Provider>

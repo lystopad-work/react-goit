@@ -1,0 +1,20 @@
+[
+  {
+    "title": "What is React?",
+    "options": ["Library", "Framework", "Language"],
+    "isCorrectIndex": 0,
+    "userAnswer": null
+  },
+  {
+    "title": "Is React SPA library?",
+    "options": ["Yes", "No"],
+    "isCorrectIndex": 0,
+    "userAnswer": null
+  },
+  {
+    "title": "Is React has own Router?",
+    "options": ["Yes", "No", "Yes, but not using"],
+    "isCorrectIndex": 1,
+    "userAnswer": null
+  }
+]

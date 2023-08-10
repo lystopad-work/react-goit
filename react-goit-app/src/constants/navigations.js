@@ -6,5 +6,9 @@ export const navs = [
     {
         url: '/cards',
         text: 'Cards'
+    },
+    {
+        url: '/quiz',
+        text: 'Quiz'
     }
 ];
