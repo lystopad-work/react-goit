@@ -1,4 +1,5 @@
-import {createAction, createReducer, createSlice} from "@reduxjs/toolkit";
+import {createReducer, createSlice, createAsyncThunk} from "@reduxjs/toolkit";
+import {getAllCards} from "../services/rick-morty-services";
 
 // AFTER
 // export const fetchReduxCards = createAction('cards/fetch')
@@ -6,17 +7,56 @@ import {createAction, createReducer, createSlice} from "@reduxjs/toolkit";
 //     [fetchReduxCards]: (state, action) => [ ...action.payload ]
 // })
 
+export const asyncGetCards = createAsyncThunk(
+    'cards/asyncGetCards',
+    async (_, { rejectWithValue }) => {
+        try {
+            const response = await getAllCards();
+            const {results} = response.data;
+
+            return results
+        }
+        catch (e) {
+            return rejectWithValue(e.message)
+        }
+    }
+)
+
 const cardsSlice = createSlice({
-   name: 'cards',
-    initialState: [],
+    name: 'cards',
+    initialState: {
+        cards: [],
+        loading: false,
+        error: null
+    },
     reducers: {
-        fetchReduxCards: (state, action) => [ ...action.payload ]
+        fetchReduxCards: (_, action) => [ ...action.payload ]
+    },
+    extraReducers: {
+        [asyncGetCards.pending] : (state) => {
+            return {
+                ...state,
+                loading: true
+            }
+        },
+        [asyncGetCards.fulfilled] : (state, action) => {
+            return {
+                ...state,
+                cards: action.payload,
+                loading: false
+            }
+        },
+        [asyncGetCards.rejected] : (state, action) => ({
+            ...state,
+            error: action.payload,
+            loading: false
+        })
     }
 });
 
-export const {fetchReduxCards} = cardsSlice.actions;
-export default cardsSlice.reducer
 
+export const {setLoadingTrue} = cardsSlice.actions;
+export default cardsSlice.reducer
 
 
 // BEFORE
