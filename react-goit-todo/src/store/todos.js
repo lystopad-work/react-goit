@@ -1,5 +1,18 @@
-import {createAsyncThunk, createSlice} from "@reduxjs/toolkit";
+import {createAsyncThunk, createSelector, createSlice} from "@reduxjs/toolkit";
 
+export const selectTodos = state => state.todos;
+export const selectCompletedTodos =
+    createSelector(selectTodos, ({todos}) => todos.filter((todo) => todo.completed));
+
+export const selectTodosCountDifference =
+    createSelector([selectTodos, selectCompletedTodos],
+        ({todos}, completedTodos) => {
+            const todosCount = todos.length;
+            const completedTodosCount = completedTodos.length;
+
+            return { difference: todosCount - completedTodosCount }
+        }
+    )
 export const fetchTodos = createAsyncThunk(
     'todos/fetchTodos',
     async (_, { rejectWithValue }) => {
@@ -19,7 +32,6 @@ const todosSlice = createSlice({
         loading: false,
         error: null
     },
-    reducers: {},
     extraReducers: {
         [fetchTodos.pending]: (state) => ({...state, loading: true}),
         [fetchTodos.fulfilled]: (state, action) => ({...state, todos: action.payload, loading: false}),

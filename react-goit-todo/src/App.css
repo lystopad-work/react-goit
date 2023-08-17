@@ -1,0 +1,13 @@
+.todo-item-wrapper {
+    margin-top: 5px;
+    display: flex;
+    justify-content: space-between;
+}
+
+.todo-item {
+    background: rgba(239, 62, 53, 0.73);
+}
+
+.completed {
+    background: rgba(1, 197, 80, 0.73);
+}

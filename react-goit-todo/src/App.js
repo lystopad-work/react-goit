@@ -1,26 +1,39 @@
 import {useDispatch, useSelector} from "react-redux";
-import {useEffect} from "react";
-import {fetchTodos} from "./store/todos";
+import {useEffect, useState} from "react";
+import {fetchTodos, selectCompletedTodos, selectTodos, selectTodosCountDifference} from "./store/todos";
+import './App.css';
+import {useGetAllTodosQuery, useGetTodoByIdQuery, useRemoveTodoByIdMutation} from "./store/todosQuery";
 
 function App() {
-  const {todos, error, loading} = useSelector(state => state.todos);
+  const [currentTodo, setCurrentTodo] = useState(null);
 
-  const dispatch = useDispatch();
+  const {data: todos, isLoading, isError} = useGetAllTodosQuery();
+  const {data: todo} = useGetTodoByIdQuery(currentTodo);
+  const [removeTodo, removeTodoResult] = useRemoveTodoByIdMutation();
 
-  useEffect(() => {
-    dispatch(fetchTodos());
-  }, []);
+  console.log(removeTodo)
 
-  if (loading) return <h1>Spinner</h1>
+  const onRemoveTodoClick = (e, id) => {
+    e.stopPropagation();
 
-  if (error) return <h1>{error}</h1>
+    removeTodo(id)
+  }
+
+
+  if (isLoading) return <h1>Spinner</h1>
+
+  if (isError) return <h1>Error message</h1>
 
   return (
     <div className="App">
       {todos.map(todo => (
-          <li key={todo.id}>
-            <h4>{todo.title}
+          <li key={todo.id} className='todo-item-wrapper' onClick={() => setCurrentTodo(todo.id)}>
+            <h4 className={`todo-item ${todo.completed ? 'completed' : ''}`}>
+              {todo.title}
             </h4>
+            <button type='button' onClick={(e) => onRemoveTodoClick(e, todo.id)}>
+              Remove
+            </button>
           </li>
       ))}
     </div>
