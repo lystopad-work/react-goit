@@ -1,0 +1,73 @@
+{
+  "todos": [
+    {
+      "id": "1",
+      "title": "1 todo",
+      "completed": "false"
+    },
+    {
+      "id": "2",
+      "title": "2 todo",
+      "completed": "false"
+    }
+  ],
+  "users": [
+    {
+      "email": "test",
+      "password": "test1@mail.com",
+      "id": 1
+    },
+    {
+      "email": "test",
+      "password": "test1@mail.com",
+      "id": 2
+    },
+    {
+      "email": "test1@mail.com",
+      "password": "123",
+      "id": 3
+    },
+    {
+      "email": "test",
+      "password": "test",
+      "id": 4
+    },
+    {
+      "id": 5
+    },
+    {
+      "email": "test",
+      "password": "test",
+      "id": 6
+    },
+    {
+      "id": 7
+    },
+    {
+      "email": "test",
+      "password": "test",
+      "id": 8
+    },
+    {
+      "email": "test",
+      "password": "test",
+      "id": 9
+    },
+    {
+      "id": 10
+    },
+    {
+      "email": "test",
+      "password": "test",
+      "id": 11
+    },
+    {
+      "id": 12
+    },
+    {
+      "email": "test",
+      "password": "test",
+      "id": 13
+    }
+  ]
+}
