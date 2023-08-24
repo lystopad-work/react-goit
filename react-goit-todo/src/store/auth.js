@@ -1,10 +1,10 @@
 import {createAsyncThunk, createSlice} from "@reduxjs/toolkit";
 import api, {token} from "../http";
-
 export const signup = createAsyncThunk('auth/register',
     async (registerData) => {
         try {
-            await api.post('/users', registerData)
+            const response = await api.post('auth/sign-up', registerData)
+            console.log(response)
             return {
                 email: "user1@mail.com",
                 token: "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjEifQ.BQmWM1mXBfpTw_Tv-yR3qodI0OoRmrm3Tlz6ZR60Yi4"
@@ -18,15 +18,13 @@ export const signup = createAsyncThunk('auth/register',
 export const login = createAsyncThunk('auth/login',
     async (loginData) => {
         try {
-            const response = await api.post('/users', loginData)
-            const hardCodedDataBaseResponse = {
-                email: "user1@mail.com",
-                token: "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjEifQ.BQmWM1mXBfpTw_Tv-yR3qodI0OoRmrm3Tlz6ZR60Yi4"
-            }
+            const response = await api.post('/auth/sign-in', loginData)
 
-            token.set(hardCodedDataBaseResponse.token)
+            const {accessToken, user} = response.data;
 
-            return hardCodedDataBaseResponse;
+            token.set(accessToken)
+
+            return {token: accessToken, user};
         } catch (e) {
             console.log('error', e)
         }
@@ -34,25 +32,28 @@ export const login = createAsyncThunk('auth/login',
 )
 
 export const logOut = createAsyncThunk('auth/logout',
-    async () => {
-        const responseFromBackend = await api.post('/users');
-        if (responseFromBackend) {
-            token.unset();
+    async (loginData, thunkAPI) => {
+        try {
+            const token = thunkAPI.getState().authReducer.token;
+
+            return await api.post('/auth/logout', {token})
+
+        } catch (e) {
+            thunkAPI.rejectWithValue(e)
         }
-})
+    }
+)
 
 export const getCurrentUser = createAsyncThunk('auth/getUser',
     async (_, thunkData) => {
        try {
            const storeData = thunkData.getState();
-
            const token = storeData.authReducer.token;
-           if (token) {
-               // const backendResponse = await api.post('/auth/getuser', token) // RESPONSE = USER{}
 
-               return {
-                   email: "user1@mail.com", // ЦЕ ОТРИМУЄМО З БЕКЕНДУ У ВІДПОВІДЬ
-               }
+           if (token) {
+               const response = await api.post('/auth/current-user', {token}) // RESPONSE = USER{}
+               const {user} = response.data;
+               return user;
            }
            if (!token) {
                return thunkData.rejectWithValue('Token is not detected')
@@ -64,9 +65,11 @@ export const getCurrentUser = createAsyncThunk('auth/getUser',
 
 
 const initialState = {
-    user: { email: null },
+    user: { email: null, username: null },
     token: null,
-    isAuth: false
+    isAuth: false,
+    error: false,
+    isUserFetching: false
 }
 
 const authSlice = createSlice({
@@ -74,8 +77,8 @@ const authSlice = createSlice({
     initialState,
     extraReducers: {
         [login.fulfilled]: (state, action) => {
-            const {token, email} = action.payload;
-            state.user.email = email;
+            const {token, user} = action.payload;
+            state.user = user;
             state.token = token;
             state.isAuth = true;
         },
@@ -84,9 +87,19 @@ const authSlice = createSlice({
             state.isAuth = false;
             state.token = ''
         },
+        [logOut.rejected]: (state, _) => {
+            state.error = 'ERROR'
+        },
+        [getCurrentUser.pending] : (state) => {
+            state.isUserFetching = true;
+        },
         [getCurrentUser.fulfilled] : (state, action) => {
             state.user = action.payload;
             state.isAuth = true;
+            state.isUserFetching = false
+        },
+        [getCurrentUser.rejected] : (state) => {
+            state.isUserFetching = false
         }
     }
 })

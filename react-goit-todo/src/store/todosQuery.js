@@ -1,7 +1,6 @@
 import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react'
 
-const jsonUrl = 'https://jsonplaceholder.typicode.com/'
-const baseUrl = 'http://localhost:3001/'
+const baseUrl = 'http://localhost:3002/'
 export const todosApi = createApi({
         reducerPath: 'todosApi',
         tagTypes: ['Todos'],
@@ -25,6 +24,5 @@ export const todosApi = createApi({
  })
 export const {
     useGetAllTodosQuery,
-    useGetTodoByIdQuery,
     useRemoveTodoByIdMutation
 } = todosApi

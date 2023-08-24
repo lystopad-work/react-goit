@@ -12,6 +12,17 @@
     justify-content: space-around;
 }
 
+.header-nav {
+    display: flex;
+    justify-content: space-around;
+    color: #3373ec;
+    text-decoration: none;
+}
+
+.header-nav .active {
+    color: red;
+}
+
 .todo-item-wrapper {
     margin-top: 5px;
     display: flex;
